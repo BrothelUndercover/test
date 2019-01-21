@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>first learn vue</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app-4">
+		<p v-for="todo in todos">{{ todo.text }}<i>
+	</div>
+</body>
+<script>
+	var app4 = new Vue({
+		el:'#app-4',
+		data: {
+			todos: [
+				{
+					text:'学习javascript'
+				},
+				{
+					text:'学习vue'
+				},
+				{
+					text: '整个牛项目'
+				}
+			]
+		}
+	})
+</script>
+</html>
