@@ -4,32 +4,48 @@
 	<meta charset="UTF-8">
 	<title>first learn vue</title>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 </head>
 <body>
-	<div id="demo">
-		{{ fullName }}
+	<div id="watch-example">
+		<p>ASK YES/no questuon
+			<input v-model="question">
+		</p>
+		<p>{{ answer }}</p>
 	</div>
 </body>
 <script>
-	var vm = new Vue({
-		el:'#demo',
+	var watchExampleVM = new Vue({
+		el: '#watch-example',
 		data: {
-			firstName: 'Foo',
-			lastName: 'Bar',
+			question: '',
+			answer : 'I cannot give you an answer until you ask a question!'
 		},
-		computed: {
-			fullName: {
-				//getter
-				get:function (){
-					return this.firstName+ ' '+ this.lastName
-				},
-				//setter
-				set:function (newValue) {
-					var names = newValue.split(' ')
-					console.log(names);
-					this.firstName = names[0]
-					this.lastName = names[names.length -1]
+		watch: {
+			question:function (newQuestion, oldQuestion){
+				this.answer = 'waiting for you stop typeing...'
+				this.debouncedGetAnswer()
+			}
+		},
+		created :function (){
+			this.debouncedGetAnswer = _.debounce(this.getAnswer,500)
+		},
+		methods: {
+			getAnswer:function(){
+				if (this.question.indexOf('?') === -1) {
+					this.answer = "Questions usually contain a question mark"
+					return 
 				}
+				this.answer = 'thinking...'
+				var vm = this
+				axios.get('https://yesno.wtf/api')
+					.then(function(response){
+						vm.answer = _.capitalize(response.data.answer)
+					}) 
+					.catch(function(error){
+						vm.answer = 'error could not reach the API'+ error
+					})
 			}
 		}
 	})
