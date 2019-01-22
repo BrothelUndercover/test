@@ -6,26 +6,22 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-	<div id="example">
-		<p>original message: "{{ message }}"</p>
-		<p> reversed meaages:"{{ now }}"</p>
+	<div id="demo">
+		{{ fullName }}
 	</div>
 </body>
 <script>
 	var vm = new Vue({
-		el: '#example',
+		el:'#demo',
 		data: {
-			message : 'hello'
+			firstName: 'Foo',
+			lastName: 'Bar',
 		},
-		// methods: {
-		//   reversedMessage: function () {
-		//     return this.message.split('').reverse().join('')
-		//   }
-		// }
 		computed: {
-			now:function(){
-				return Date.now()
+			fullName: function (){
+				return this.firstName+' '+this.lastName
 			}
+
 		}
 	})
 </script>
