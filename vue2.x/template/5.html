@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模板－指令(directives)-参数</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<p>v-bind:href href为参数，一些指令能够接收一个“参数”，在指令名称之后以冒号表示</p>
+	<p>v-on指令用于监听Dom事件</p>
+	<div id="app">
+		<a v-bind:href="url"></a>
+		<a v-on:click='something'>点我</a>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#app",
+			data: {
+				url: 'www.baidu.com'
+			},
+			methods:{
+				something: function(){
+					return '不要'
+				}
+			}
+		})
+	</script>
+</body>
+</html>
