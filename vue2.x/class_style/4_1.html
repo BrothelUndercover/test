@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象语法２　将多个样式对象应用到同一元素上</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-bind:style="[baseStyles,hello]">sff</div>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				baseStyles:{
+					color:'red',
+					fontSize:'16px',
+					background : 'black'
+				},
+				hello:{
+					
+				}
+			}
+		})
+	</script>
+</body>
+</html>

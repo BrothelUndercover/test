@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用在组件上</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-component class="baz boo">sfa</my-component>
+	</div>
+	<script type="text/javascript" src="../vue.js">
+		Vue.component('my-component',{
+			template: '<p class="foo bar"> Hi </p>'
+		})
+	</script>
+</body>
+</html>
