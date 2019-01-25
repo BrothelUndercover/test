@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>替换数组</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul v-for="item of items">
+			<span>{{ item }}</span>
+		</ul>
+		<input type="button" value="点我"　@click="dianji">
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				items:[
+					{'a':1},
+					{'a':2},
+					{'a':3}
+				]
+			}
+			
+		})
+	</script>
+</body>
+</html>

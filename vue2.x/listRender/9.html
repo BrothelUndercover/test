@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-for with v-if</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<mycom v-for="(item,index) in todo" :key="index" :lie="item.ok"></mycom>
+	</div>
+	<script type="text/javascript">
+		Vue.component('mycom',{
+			template:"<h1>疯狂的石头{{ this.lie }}</h1>",
+			props:["lie"]
+		})	
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				todo:[
+					{text:1,ok:true},
+					{text:2,ok:false},
+					{text:3,ok:true}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象更改检测注意事项</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			data:{
+				object:{
+					firstname:'foo',
+					lasename:'bar',
+					age: 25
+				}
+			}
+		})
+		//给对象新加属性(不要这样)
+	Object.assign(vm.userProfile, {
+	  age: 27,
+	  favoriteColor: 'Vue Green'
+	})
+	//这样
+	vm.userProfile = Object.assign({}, vm.userProfile, {
+	  age: 27,
+	  favoriteColor: 'Vue Green'
+	})
+	</script>
+</body>
+</html>

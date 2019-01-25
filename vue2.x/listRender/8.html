@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一段取值范围的v－for</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<p>v-for on a '<template>'</p>
+	<div id="app">
+		<!-- <span v-for="n in 10">{{ n }}</span> -->
+		<ul>
+		  <template v-for="item in items">
+		    <li>{{ item.msg }}</li>
+		    <li class="divider" role="presentation"></li>
+		  </template>
+		</ul>
+
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				numbers:[1,2,3,4,5,6],
+				items:{
+					msg:[1,2,4,5,6]
+				}
+			}
+		})
+	</script>
+</body>
+</html>

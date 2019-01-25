@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组更新检测-变异方法</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div>
+			push方法
+			<input type="text" v-model="text" @keyup.enter="methodByPush">
+			<input type="button" value="测试" @click='methodByPush'>
+			<ul>
+				<li v-for="item of items">
+					<span v-text="item" ></span>
+				</li>
+			</ul>
+		</div>
+	
+		<div>
+			pop方法:
+			<input type="button" value="测试" @click='methodByPoP'>
+			<ul>
+				<li v-for="item of items">
+					<span v-text="item"></span>
+				</li>
+			</ul>
+		</div>
+
+		<div>
+			shift方法:
+			<input type="button" value="测试" @click="methodByShift">
+			<ul>
+				<li v-for="item of items">
+					<span v-text="item"></span>
+				</li>
+			</ul>
+		</div>
+
+		<div>
+			unshift方法
+			<input type="button" value="测试" @click="methodUnshift">
+			<ul>
+				<li v-for="item of items">
+					<span v-text="item"></span>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				items:['a'],
+				text: '',
+				result: ''
+			},
+			methods: {
+				methodByPush: function (){
+					this.result = this.items.push(this.text)
+					this.text = ''
+				},
+				methodByPoP:function (){
+					this.result = ''
+					this.result = this.items.pop()
+					console.log(this.result)
+				},
+				methodByShift:function (){
+					this.result =''
+					this.result = this.items.shift()
+				},
+				methodUnshift:function(){
+					// this.result = ''
+					this.result = this.items.unshift(this.text)
+				}
+			}
+
+		})
+	</script>
+</body>
+</html>
